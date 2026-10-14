@@ -27,4 +27,7 @@ public class Doctor{
     @Column(name = "dob",nullable = false)
     private String dob;
 
+    @Column(name = "mobile")
+    private String mobile;
+
 }

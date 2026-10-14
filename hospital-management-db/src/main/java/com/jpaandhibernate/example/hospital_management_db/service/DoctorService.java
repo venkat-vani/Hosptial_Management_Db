@@ -47,5 +47,43 @@ public class DoctorService {
         }
         }
 
+        //update using put operation - updates complete object
+    public String updateDoctorUsingPut(int doctorId, Doctor newDoctorRequest){
+        //find doctor with id
+        //if doctor is present, update i
+        //else we cannot update
+        Doctor existingDoctor = findDoctorById(doctorId);
+        if(existingDoctor!=null){
+            //proceed to update
+            doctorRepository.save(newDoctorRequest);
+            return"Doctor with id : "+doctorId+" got updated successfully!";
+        }else{
+            //cannot update
+            return"Doctor with id : "+doctorId+ "id not present, hence cannot update!";
+
+        }
+
+    }
+        //update using patch operation - updates single specific fields
+        public String updateDoctorUsingPatch(int doctorId, String newEmail, String newMobile){
+            //find doctor with id
+            //if doctor is present, update i
+            //else we cannot update
+            Doctor existingDoctor = findDoctorById(doctorId);
+            if(existingDoctor!=null){
+                //proceed to update
+                existingDoctor.setEmail(newEmail);
+
+                doctorRepository.save(existingDoctor);
+                return"Doctor with id : "+doctorId+ "got updated successfully!";
+            }else{
+                //cannot update
+                return"Doctor with id : "+doctorId+ "id not present, hence cannot update!";
+
+            }
+
+        }
+
+
 
 }

@@ -12,6 +12,7 @@ import java.util.List;
 //debugging taking the flow of the application (understand the line by line what is happenning and all )
 //@Requestbody it is take the input from the UI or postman and it is only used for only co
 
+
 @RestController
 @RequestMapping("/doctor/apis")
 public class DoctorController {
@@ -42,5 +43,18 @@ public class DoctorController {
         String response = doctorService.deleteDoctorById(id);
         return response;
         }
+    @PutMapping("/updatePut/{doctorId}")
+    public String updateDoctorUsingPut(@PathVariable int doctorId,@RequestBody Doctor newDoctorRequest){
+        String response = doctorService.updateDoctorUsingPut(doctorId,newDoctorRequest);
+        return response;
+    }
 
-}
+    // @RequestParam - it takes the input in the form of parameter query
+    @PatchMapping("/updatePatch/{doctorId}")
+    public String updateDoctorUsingPatch(@PathVariable int doctorId,@RequestParam String newEmail,@RequestParam String newMobile){
+        String response = doctorService.updateDoctorUsingPatch(doctorId,newEmail,newMobile);
+        return response;
+    }
+      }
+
+
